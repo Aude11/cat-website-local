@@ -1,0 +1,35 @@
+import requests
+from .QuoteApi import QuoteApi
+
+
+class GoQuoteApi(QuoteApi):
+    def __init__(self):
+        self.url = "https://goquotes-api.herokuapp.com/api/v1/random?count=1"
+
+    def _get_request(self):
+        response = requests.request("GET", self.url)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
+    def get_content(self):
+        response = self._get_request()
+        if response is not None:
+            return response["quotes"][0]
+        else:
+            return None
+
+    def get_quote(self):
+        content_quote = self.get_content()
+        if content_quote is not None:
+            return content_quote["text"]
+        else:
+            return None
+
+    def get_author(self):
+        content_quote = self.get_content()
+        if content_quote is not None:
+            return content_quote["author"]
+        else:
+            return None

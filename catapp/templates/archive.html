@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+{%extends "layout.html"%}
+
+{%block content%}
+
+<!-- CARD Images -->
+<section class="archive>
+<div class=" container-fluid">
+  <div class="row">
+    <div class="container-fluid-card">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 cat-card">
+        {% for j in range(starting,end) %}
+        <div class="col">
+          <div class="card mx-auto card-archive">
+            <img src={{cats[j]["url"]}} class="card-img-top background-cat" alt="cat">
+            <div class="card-header">
+              <form action="/archive/{{page}}" method="post" id="{{j}}">
+                <input type="hidden" name={{cats[j]["_id"]}} value="{{j}}">
+              </form>
+              <button type="submit" form="{{j}}" value="Submit"><i class="fas fa-heart heart-pink"></i> {{cats[j]["likes"]}}</button>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{cats[j]["quote"]}}</p>
+              <h6 class="card-subtitle mb-2 text-muted">{{cats[j]["author"]}}</h6>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">{{cats[j]["date"].strftime("%x")}}</small>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<!-- Pagination-->
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {% if page > 1 %}
+    <li class="page-item">
+      <a class="page-link" href={{url_for('archive', page=previous_page)}} aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href={{url_for('archive', page=previous_page)}}>{{previous_page}}</a></li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href={{url_for('archive', page=page)}}>{{page}}</a></li>
+    {% if page != number_of_total_pages %}
+    <li class="page-item"><a class="page-link" href={{url_for('archive', page=next_page)}}>{{next_page}}</a></li>
+    <li class="page-item">
+      <a class="page-link" href={{url_for('archive', page=next_page)}} aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+
+{%endblock%}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+{%extends "layout.html"%}
+
+{%block content%}
+
+<!-- Title -->
+<section id="title">
+  <div class="container-fluid-title ">
+    <h1 class="title-heading">Because every Saturday is a Caturday!</h1>
+    <p>Discover today cat and quote!</p>
+    {% if btn_click == False %}
+    <button type="submit" class="btn btn-lg btn-light" id="btn-caturday"><i class="fas fa-heart heart-pink"></i><a class="new-cat" href={{url_for('update_cat_image')}}> New Cat? </a></button>
+    {% elif is_caturday == True %}
+    <p>It is Caturday! See the new picture</p>
+    {% else %}
+    <p>Sorry, it is not Caturday yet!</p>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Image -->
+<section id="image-today-cat">
+  <div class="container-fluid-title-image ">
+    <div class="card title-card mx-auto">
+      <img class="img-thumbnail opacity-30 rounded-3 mx-auto d-block" src={{cat["url"]}} usemap="#catmap" alt="cat-image">
+      <map name="catmap">
+        <area shape="default" alt="Cat" href={{url_for('update_cat_image')}}>
+      </map>
+      <div class="card-body">
+        <form action="/" method="post">
+          <h5 class="card-title"><button type="button" class="btn btn-md btn-light "> <i class="fas fa-heart heart-pink"></i> {{cat["likes"]}}</button>
+            <input type="submit" name={{cat["_id"]}} value="Like" class="btn btn-md btn-light">
+          </h5>
+        </form>
+        <p class="card-text">{{cat["quote"]}}</p>
+        <p class="card-text quote-author"><small class="text-muted">{{cat["author"]}}</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%endblock%}
