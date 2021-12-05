@@ -25,7 +25,7 @@ The website works currently locally. The deployment of the website is in progres
 
 * API:
   * [Cat API](https://api.thecatapi.com/)
-  * [Quote ZEN API](https://zenquotes.io/api/random
+  * [Quote ZEN API](https://zenquotes.io/)
 
 ## Usage
 
