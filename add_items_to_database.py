@@ -1,9 +1,10 @@
 import json
 import pymongo
 from datetime import datetime
+from catapp.mongodb_config import admin_db, password_db
 
 
-client = pymongo.MongoClient("mongodb+srv://admin:password@cluster0.ndyoh.mongodb.net/")
+client = pymongo.MongoClient("mongodb+srv://" + admin_db + ":" + password_db + "@cluster0.ndyoh.mongodb.net/")
 data_base_name = "mycats"
 collection_name = "items"
 database = client[data_base_name]

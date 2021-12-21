@@ -1,9 +1,9 @@
 from pymongo import MongoClient
+from .mongodb_config import admin_db, password_db
 
 
 class DataBase:
     def __init__(self, connection_string="mongodb+srv://admin:password@cluster0.ndyoh.mongodb.net/"):
-        #"mongodb://localhost:27017/"
         self.connection_string = connection_string
 
     def check_data_base(self, data_base_name):  # not in use should be delete
@@ -15,7 +15,6 @@ class DataBase:
             return False
 
     def _connect_to_client(self):
-        #return pymongo.MongoClient(self.connection_string)
         return MongoClient(self.connection_string)
 
     def connect_to_data_base(self, data_base_name):
