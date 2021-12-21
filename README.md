@@ -36,9 +36,35 @@ The pagination button views for navigating through pages are at the bottom of ea
 
 The users can press a "like" button for each image. Then, the new amount of likes is updated in the database.
 
-**Start the program**
+## Requirement
+
+Set yourself an account on MongoDB
+
+## Start the program locally
+
+**Add your MongoDB admin and password**
+Modify the file mongodb_config.py by adding your mongoDB admin and password there.
+
+**Add data into your MongoDB database**
+
+The file data.txt contains some data in json format to add to your website.
+To add those data into your database, run :
+
+```
+python add_items_to_database.py
+```
+
+**Start the program to run website**
+
 ```
 python run.py
+```
+
+**View the website**
+
+On the browser 
+```
+http://127.0.0.1:5000
 ```
 
 ## Images
