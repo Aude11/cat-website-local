@@ -3,7 +3,7 @@ from .mongodb_config import admin_db, password_db
 
 
 class DataBase:
-    def __init__(self, connection_string="mongodb+srv://admin:password@cluster0.ndyoh.mongodb.net/"):
+    def __init__(self, connection_string="mongodb+srv://" + admin_db + ":" + password_db + "@cluster0.ndyoh.mongodb.net/"):
         self.connection_string = connection_string
 
     def check_data_base(self, data_base_name):  # not in use should be delete
